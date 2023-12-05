@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.Animations;
 using System.Collections.Generic;
+using Inventory.Model;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerAttack : MonoBehaviour
     bool attacking;
     public AnimationClip spinClip;
     public AnimationClip swingClip;
+    private PlayerWeapon weapon;
+    [SerializeField] private InventorySO inventoryData;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +26,13 @@ public class PlayerAttack : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
         local_current_dir = movement.currentDir;
         swordAnimator = playerHandObject.GetComponent<Animator>();
+        weapon = GetComponent<PlayerWeapon>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && weapon.GetWeapon() != null)
         {
             playerHandObject.SetActive(true);
             attacking = swordAnimator.GetBool("attacking");
@@ -77,7 +81,18 @@ public class PlayerAttack : MonoBehaviour
         IDamageHandler damageHander = collision.GetComponent<IDamageHandler>();
         if(damageHander != null)
         {
-            damageHander.hit(gameObject);
+            damageHander.hit(gameObject, weapon.weaponMeleeDamage);
+            weapon.weaponDurability--;
+            CheckWeaponDurability(weapon);
+        }
+    }
+
+    public void CheckWeaponDurability(PlayerWeapon pWeapon)
+    {
+        if (weapon.weaponDurability <= 0)
+        {
+            weapon.UnequipAndDestroy();
+            playerHandObject.SetActive(false);
         }
     }
 }

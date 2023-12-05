@@ -487,6 +487,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548911044}
   m_CullTransparentMesh: 1
+--- !u!1 &576083143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8379461308438925648, guid: 5acd15ee706aecf45b0e28c4b57b09be, type: 3}
+  m_PrefabInstance: {fileID: 1197086854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &620903211
 GameObject:
   m_ObjectHideFlags: 0
@@ -4242,7 +4247,7 @@ Tilemap:
       - {fileID: 626259399, guid: 1b47a4e861cdc1a4cb34c415e5ba30c5, type: 3}
       - {fileID: 1342044326, guid: 1b47a4e861cdc1a4cb34c415e5ba30c5, type: 3}
       - {fileID: -1858397557, guid: 1b47a4e861cdc1a4cb34c415e5ba30c5, type: 3}
-      m_AnimationSpeed: 20
+      m_AnimationSpeed: 20.000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -4825,6 +4830,18 @@ PrefabInstance:
       propertyPath: initialItems.Array.data[1].item
       value: 
       objectReference: {fileID: 11400000, guid: 18afb86e894e976448c112cebb6877bd, type: 2}
+    - target: {fileID: 1531228219331527324, guid: 5acd15ee706aecf45b0e28c4b57b09be, type: 3}
+      propertyPath: initialItems.Array.data[1].itemState.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531228219331527324, guid: 5acd15ee706aecf45b0e28c4b57b09be, type: 3}
+      propertyPath: initialItems.Array.data[1].itemState.Array.data[0].value
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531228219331527324, guid: 5acd15ee706aecf45b0e28c4b57b09be, type: 3}
+      propertyPath: initialItems.Array.data[1].itemState.Array.data[0].itemParameter
+      value: 
+      objectReference: {fileID: 11400000, guid: 620b3fba2726ac7439d2bfa05b5e528d, type: 2}
     - target: {fileID: 2115240323913152230, guid: 5acd15ee706aecf45b0e28c4b57b09be, type: 3}
       propertyPath: healthImages.Array.data[0]
       value: 
@@ -4941,11 +4958,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
   inventoryData: {fileID: 11400000, guid: 224af8e809804a74bb26f79cb1ec736c, type: 2}
-  weaponParameters:
-  - itemParameter: {fileID: 11400000, guid: 620b3fba2726ac7439d2bfa05b5e528d, type: 2}
-    value: -20
-  weaponCurrentState: []
+  playerHandObject: {fileID: 576083143}
   equippedMeleeSlot: {fileID: 829786322}
+  weaponDurability: 0
+  weaponMeleeDamage: 0
 --- !u!1 &1224011093 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5465950638501450203, guid: 6d4eb5c2f197a3a41be7d69a50c917c0, type: 3}
@@ -18648,7 +18664,7 @@ Tilemap:
       - {fileID: 626259399, guid: 1b47a4e861cdc1a4cb34c415e5ba30c5, type: 3}
       - {fileID: 1342044326, guid: 1b47a4e861cdc1a4cb34c415e5ba30c5, type: 3}
       - {fileID: -1858397557, guid: 1b47a4e861cdc1a4cb34c415e5ba30c5, type: 3}
-      m_AnimationSpeed: 20.000002
+      m_AnimationSpeed: 20
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -5, y: 6, z: 0}

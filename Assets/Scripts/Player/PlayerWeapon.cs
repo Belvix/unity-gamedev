@@ -1,5 +1,6 @@
 using Inventory.Model;
 using Inventory.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,23 +13,31 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField]
     private InventorySO inventoryData;
 
-    [SerializeField]
-    private List<ItemParameter> weaponParameters, weaponCurrentState;
+    // [SerializeField] private List<ItemParameter> weaponParameters, weaponCurrentState;
 
     [SerializeField]
     private EquippedMeleeSlot equippedMeleeSlot;
 
-    public void SetWeapon(EquippablesSO weaponSO, List<ItemParameter> itemState)
+    [SerializeField]
+    public int weaponDurability;
+
+    [SerializeField]
+    public int weaponMeleeDamage;
+
+    public void SetWeapon(EquippablesSO weaponSO)
     {
         if (weapon != null)
         {
-            inventoryData.AddItem(weapon, 1, weaponCurrentState);
+            inventoryData.AddItem(weapon, 1);
         }
 
         this.weapon = weaponSO;
-        this.weaponCurrentState = new List<ItemParameter>(itemState);
         equippedMeleeSlot.SetData(weaponSO.ItemSprite);
-        ModifyParameters();
+        this.weaponDurability = weapon.Durability;
+        this.weaponMeleeDamage = weapon.MeleeDamage;
+
+        // this.weaponCurrentState = new List<ItemParameter>(itemState);
+        // ModifyParameters();
     }
 
     public EquippablesSO GetWeapon()
@@ -36,7 +45,15 @@ public class PlayerWeapon : MonoBehaviour
         return this.weapon;
     }
 
-    private void ModifyParameters()
+    public void UnequipAndDestroy()
+    {
+        this.weaponDurability = 0;
+        this.weaponMeleeDamage = 0;
+        Destroy(this.weapon);
+        equippedMeleeSlot.ResetData();
+    }
+
+    /* private void ModifyParameters()
     {
         foreach (var param in weaponParameters)
         {
@@ -52,6 +69,6 @@ public class PlayerWeapon : MonoBehaviour
 
             }
         }
-    }
+    } */
 
 }

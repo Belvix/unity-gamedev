@@ -11,7 +11,7 @@ namespace Inventory.Model
 
         public AudioClip ActionSound { get; private set; }
 
-        public bool PerformAction(GameObject character, List<ItemParameter> itemState = null)
+        public bool PerformAction(GameObject character)
         {
             return true;
         }

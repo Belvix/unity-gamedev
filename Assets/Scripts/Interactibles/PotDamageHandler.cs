@@ -33,7 +33,7 @@ public class PotDamageHandler : MonoBehaviour, IDamageHandler
         Destroy(gameObject);
     }
 
-    public void hit(GameObject hitter)
+    public void hit(GameObject hitter, int damage)
     {
         anim.SetTrigger("hit");
         sound.Play();

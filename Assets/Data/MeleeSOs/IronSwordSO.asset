@@ -18,6 +18,6 @@ MonoBehaviour:
   <Description>k__BackingField: Iron Sword made of iron
   <ItemSprite>k__BackingField: {fileID: 131449278, guid: 6eb16e372762d6b4cb708c44ebfab931, type: 3}
   <ItemAnimation>k__BackingField: {fileID: 0}
-  <DefaultParametersList>k__BackingField:
-  - itemParameter: {fileID: 11400000, guid: 620b3fba2726ac7439d2bfa05b5e528d, type: 2}
-    value: 200
+  <HasProjectile>k__BackingField: 0
+  <Durability>k__BackingField: 150
+  <MeleeDamage>k__BackingField: 2

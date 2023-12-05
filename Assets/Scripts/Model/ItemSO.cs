@@ -28,8 +28,7 @@ namespace Inventory.Model
         [field: SerializeField]
         public AnimationClip ItemAnimation { get; set; }
 
-        [field: SerializeField]
-        public List<ItemParameter> DefaultParametersList { get; set; }
+        // [field: SerializeField] public List<ItemParameter> DefaultParametersList { get; set; }
     }
 
     [Serializable]

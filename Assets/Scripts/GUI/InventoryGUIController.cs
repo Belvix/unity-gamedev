@@ -116,7 +116,7 @@ namespace Inventory
             IItemAction itemAction = inventoryItem.item as IItemAction;
             if (itemAction != null)
             {
-                itemAction.PerformAction(gameObject, inventoryItem.itemState);
+                itemAction.PerformAction(gameObject);
                 if (audioSource != null)
                 {
                     audioSource.PlayOneShot(itemAction.ActionSound);
@@ -148,6 +148,8 @@ namespace Inventory
             StringBuilder sb = new StringBuilder();
             sb.Append(inventoryItem.item.Description);
             sb.AppendLine();
+
+            /*
             for (int i = 0; i < inventoryItem.itemState.Count; i++)
             {
                 sb.Append($"{inventoryItem.itemState[i].itemParameter.ParameterName}" +
@@ -155,6 +157,7 @@ namespace Inventory
                     $"{inventoryItem.item.DefaultParametersList[i].value}"
                     );
             }
+            */
 
             return sb.ToString();
         }

@@ -11,18 +11,23 @@ namespace Inventory.Model
         public string ActionName => "Equip";
 
         [field: SerializeField]
-        public bool HasProjectile;
+        public bool HasProjectile { get; private set; }
 
         [field: SerializeField]
         public AudioClip ActionSound => throw new System.NotImplementedException();
 
-        public bool PerformAction(GameObject character, List<ItemParameter> itemState = null)
+        [field: SerializeField]
+        public int Durability { get; set; }
+
+        [field: SerializeField]
+        public int MeleeDamage { get; set; }
+
+        public bool PerformAction(GameObject character)
         {
             PlayerWeapon weaponSystem = character.GetComponent<PlayerWeapon>();
             if (weaponSystem != null)
             {
-                weaponSystem.SetWeapon(this, itemState == null ?
-                    DefaultParametersList : itemState);
+                weaponSystem.SetWeapon(this);
                 SwordAnimation swordAnim = character.GetComponentInChildren<SwordAnimation>();
                 if (swordAnim != null)
                 {
